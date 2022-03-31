@@ -8,7 +8,12 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-   <div>
+    <ul id="nav-access" class="a11y-nav"><li><a id="skip-main" href="#content">Skip to main content</a></li></ul>
+    <h1  id="content">Case Study: Skynet Discovery Period</h1>
+    <h2>Analytics</h2>
+    <h3>Survey Data</h3>
+    <p>This date was gathered from the Feedback Survey and Suggestion box on Skynet to create a total of 122 responses from 2017 to present.</p>
+   <div class="chart-container" focusable="true" aria-label="Most Skynet users, 24%, submitted feedback about personnel policies, followed by facility request at 24%, technical requests at 16%, strategy suggestions at 13%, and lastly recognition requests at 7%." role="img" style="position: relative; height:50vh; width:50vw">
     <canvas id="myChart"></canvas>
    </div>
    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -25,11 +30,11 @@
       label: 'My First Dataset',
       data: [29, 20, 48, 9, 16],
       backgroundColor: [
-        'rgb(255, 99, 132)',
-        'rgb(54, 162, 235)',
-        'rgb(255, 205, 86)',
-        'rgb(147, 250, 165)',
-        'rgb(159, 90, 253)'
+        'rgb(0, 0, 0)',
+        'rgb(54, 54, 54)',
+        'rgb(100, 100, 100)',
+        'rgb(200, 200, 200)',
+        'rgb(150, 150, 150)'
       ],
       hoverOffset: 4
     }]
