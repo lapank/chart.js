@@ -13,11 +13,16 @@
     <h2>Analytics</h2>
     <h3>Survey Data</h3>
     <p>This date was gathered from the Feedback Survey and Suggestion box on Skynet to create a total of 122 responses from 2017 to present.</p>
-   <div class="chart-container" focusable="true" aria-label="Most Skynet users, 24%, submitted feedback about personnel policies, followed by facility request at 24%, technical requests at 16%, strategy suggestions at 13%, and lastly recognition requests at 7%." role="img" style="position: relative; height:50vh; width:50vw">
+   <div class="chart-container" focusable="true" aria-label="Most Skynet users, 24%, submitted feedback about personnel policies, followed by facility request at 24%, technical requests at 16%, strategy suggestions at 13%, and lastly recognition requests at 7%." role="img" style="position: relative; height:90vh; width:50vw">
     <canvas id="myChart"></canvas>
+   </div>
+   <h3>Google Analytics</h3>
+   <div class="chart-container" focusable="true" aria-label="A consisten downward trend is reveiled when looking at page views from 2018 to 2022.  With 65,000 page views in 2018 cut in half to 31,464 in 2022." role="img" style="position: relative; height:50vh; width:50vw">
+    <canvas id="lineChart"></canvas>
    </div>
    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	 <script>
+    
     const data = {
     labels: [
       'Facility Requests',
@@ -48,6 +53,35 @@
     const myChart = new Chart(
       document.getElementById('myChart'),
       config
+    );
+
+    
+const labels = [
+    '2018',
+    '2019',
+    '2020',
+    '2022'
+  ];
+
+  const dataTwo = {
+    labels: labels,
+    datasets: [{
+      label: 'Site Views By Year',
+      backgroundColor: 'rgb(255, 255, 255)',
+      borderColor: 'rgb(0, 0, 0)',
+      data: [64388, 59421, 38002, 31464],
+    }]
+  };
+
+  const configTwo = {
+    type: 'line',
+    data: dataTwo,
+    options: {}
+  };
+
+const lineChart = new Chart(
+      document.getElementById('lineChart'),
+      configTwo
     );
   </script>
   </body>
