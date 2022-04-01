@@ -2,3 +2,13 @@
 	margin: 0;
 	padding: 0;
 }
+
+h1 {
+	font-family: 'Bebas Neue', cursive;
+}
+
+
+body {
+	font-family: 'Source Sans Pro', sans-serif;
+	background: #f6f4f3;
+}
