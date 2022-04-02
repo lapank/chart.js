@@ -107,13 +107,13 @@ const lineChart = new Chart(
         height: 400,
         gantt: {
           palette: [
-  {
-    "color": "#777",
-    "dark": "#555",
-    "light": "#999"
-  },
-    
-],
+            {
+              "color": "#777",
+              "dark": "#555",
+              "light": "#999"
+            },
+              
+          ],
           trackHeight: 30,
           innerGridTrack: {fill: '#fff'},
           innerGridDarkTrack: {fill: '#eee'},
@@ -136,3 +136,40 @@ console.log(gdata);
 
       chart.draw(gdata, options);
     }
+
+    /*Sankey Diagram*/
+    google.charts.load("current", {packages:["sankey"]});
+  google.charts.setOnLoadCallback(drawChart);
+   function drawChart() {
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'From');
+    data.addColumn('string', 'To');
+    data.addColumn('number', 'Weight');
+    data.addRows([
+       
+       [ 'All Users', 'General Staff Meeting', 4100 ],
+       [ 'All Users', 'Suggestion Box', 446 ],
+       [ 'All Users', 'Invoice Payments', 439 ],
+       [ 'All Users', 'Revitalisation Logistics', 161 ],
+       [ 'All Users', 'Home Page', 14000 ],
+       [ 'Home Page', 'Frequently Used Resources', 2000 ],
+       [ 'Home Page', 'Organisation Charts', 1200 ],
+       [ 'Home Page', 'Search', 684 ],
+       [ 'Home Page', 'Departments', 636 ],
+       [ 'Home Page', 'Forms and Templates', 579 ],
+       [ 'Frequently Used Resources', 'Forms and Templates', 347 ],
+       [ 'Frequently Used Resources', 'Departments', 303 ],
+       [ 'Frequently Used Resources', 'Money Matters', 171 ],
+       [ 'Departments', 'Organisation Charts', 498 ]
+       
+    ]);
+
+    // Set chart options
+    var options = {
+      width: 600,
+    };
+
+    // Instantiate and draw our chart, passing in some options.
+    var chart = new google.visualization.Sankey(document.getElementById('sankey_multiple'));
+    chart.draw(data, options);
+   }
