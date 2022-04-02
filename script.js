@@ -139,37 +139,77 @@ console.log(gdata);
 
     /*Sankey Diagram*/
     google.charts.load("current", {packages:["sankey"]});
-  google.charts.setOnLoadCallback(drawChart);
-   function drawChart() {
-    var data = new google.visualization.DataTable();
-    data.addColumn('string', 'From');
-    data.addColumn('string', 'To');
-    data.addColumn('number', 'Weight');
-    data.addRows([
-       
-       [ 'All Users', 'General Staff Meeting', 4100 ],
-       [ 'All Users', 'Suggestion Box', 446 ],
-       [ 'All Users', 'Invoice Payments', 439 ],
-       [ 'All Users', 'Revitalisation Logistics', 161 ],
-       [ 'All Users', 'Home Page', 14000 ],
+  google.charts.setOnLoadCallback(drawSankyChart);
+   function drawSankyChart() {
+    var sankyDataOne = new google.visualization.DataTable();
+    sankyDataOne.addColumn('string', 'From');
+    sankyDataOne.addColumn('string', 'To');
+    sankyDataOne.addColumn('number', 'Weight');
+    sankyDataOne.addRows([
        [ 'Home Page', 'Frequently Used Resources', 2000 ],
        [ 'Home Page', 'Organisation Charts', 1200 ],
        [ 'Home Page', 'Search', 684 ],
        [ 'Home Page', 'Departments', 636 ],
        [ 'Home Page', 'Forms and Templates', 579 ],
-       [ 'Frequently Used Resources', 'Forms and Templates', 347 ],
-       [ 'Frequently Used Resources', 'Departments', 303 ],
-       [ 'Frequently Used Resources', 'Money Matters', 171 ],
-       [ 'Departments', 'Organisation Charts', 498 ]
+       [ 'Home Page', 'Drop-off', 4800 ],
        
     ]);
 
+    var sankyDataTwo = new google.visualization.DataTable();
+    sankyDataTwo.addColumn('string', 'From');
+    sankyDataTwo.addColumn('string', 'To');
+    sankyDataTwo.addColumn('number', 'Weight');
+    sankyDataTwo.addRows([
+       [ 'Home Page', 'Frequently Used Resources', 1200 ],
+       [ 'Home Page', 'Organisation Charts', 1300 ],
+       [ 'Home Page', 'Search', 905 ],
+       [ 'Home Page', 'Forms and Templates', 649 ],
+       [ 'Home Page', 'Drop-off', 3500 ],
+       
+    ]);
+
+    var sankyDataThree = new google.visualization.DataTable();
+    sankyDataThree.addColumn('string', 'From');
+    sankyDataThree.addColumn('string', 'To');
+    sankyDataThree.addColumn('number', 'Weight');
+    sankyDataThree.addRows([
+       [ 'Home Page', 'Frequently Used Resources', 346 ],
+       [ 'Home Page', 'Organisation Charts', 637 ],
+       [ 'Home Page', 'Search', 290 ],
+       [ 'Home Page', 'Staff Cafe', 791 ],
+       [ 'Home Page', 'Departments', 376 ],
+       [ 'Home Page', 'Drop-off', 1800 ],
+       
+    ]);
+        var sankyColors = ['#eee', '#111', '#333', '#555',
+                  '#777', '#999', '#bbb', '#ddd'];
+
     // Set chart options
     var options = {
-      width: 600,
+      width: 700,
+      height: 300,
+      sankey: {
+        node: {
+          nodePadding: 40,
+          colors: sankyColors,
+          label: { 
+            fontName: 'Source Sans Pro',
+            fontSize: 14,
+            color: '#000',
+            },
+        },
+        link: {
+          colorMode: 'gradient',
+          colors: sankyColors
+        },
+      }
     };
 
     // Instantiate and draw our chart, passing in some options.
-    var chart = new google.visualization.Sankey(document.getElementById('sankey_multiple'));
-    chart.draw(data, options);
+    var chartOne = new google.visualization.Sankey(document.getElementById('sankey_one'));
+    var chartTwo = new google.visualization.Sankey(document.getElementById('sankey_two'));
+    var chartThree = new google.visualization.Sankey(document.getElementById('sankey_three'));
+    chartOne.draw(sankyDataOne, options);
+    chartTwo.draw(sankyDataTwo, options);
+    chartThree.draw(sankyDataThree, options);
    }
